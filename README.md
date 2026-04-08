@@ -10,7 +10,7 @@ This project is part of the Playwright course from [QAXperience](https://qaxperi
 - **Node.js** - JavaScript runtime environment
 - **@faker-js/faker** (^10.4.0) - Fake test data generation
 - **PostgreSQL** (^8.20.0) - Database for testing
-- **TypeScript** - Static typing for JavaScript
+- **Javascript** 
 
 ## How to Run
 
@@ -21,13 +21,15 @@ This project is part of the Playwright course from [QAXperience](https://qaxperi
 
 ### Install Dependencies
 
+Clone repository and install dependencies:
+
 ```bash
 npm install
 ```
 
 ### Running Tests
 
-To run all tests:
+To run all tests (headless mode):
 ```bash
 npx playwright test
 ```
