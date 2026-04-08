@@ -1,0 +1,122 @@
+{
+  "create": {
+    "title": "Night of the Living Dead",
+    "overview": "Um grupo de pessoas se refugia em uma casa para sobreviver a um ataque de mortos-vivos.",
+    "featured": false,
+    "release_year": 1970,
+    "company": "Universal Pictures",
+    "cover": "/images/night_of_the_living_dead.png"
+  },
+  "movie_2": {
+    "title": "Dawn of the Dead",
+    "overview": "Sobreviventes se escondem em um shopping enquanto enfrentam zumbis.",
+    "featured": false,
+    "release_year": 1978,
+    "company": "United Film Distribution Company",
+    "cover": "/images/dawn_of_the_dead_1978.png"
+  },
+  "movie_3": {
+    "title": "Day of the Dead",
+    "overview": "Cientistas e militares vivem isolados tentando entender os zumbis.",
+    "featured": false,
+    "release_year": 1985,
+    "company": "United Film Distribution Company",
+    "cover": "/images/day_of_the_dead.png"
+  },
+  "movie_4": {
+    "title": "Return of the Living Dead",
+    "overview": "Um gás químico reanima os mortos e causa caos.",
+    "featured": false,
+    "release_year": 1985,
+    "company": "Orion Pictures",
+    "cover": "/images/return_of_the_living_dead.png"
+  },
+  "movie_5": {
+    "title": "Braindead",
+    "overview": "Uma infestação zumbi começa após um incidente com uma criatura exótica.",
+    "featured": false,
+    "release_year": 1992,
+    "company": "Trimark Pictures",
+    "cover": "/images/braindead.png"
+  },
+  "movie_6": {
+    "title": "28 Days Later",
+    "overview": "Um vírus transforma humanos em criaturas violentas.",
+    "featured": false,
+    "release_year": 2002,
+    "company": "Fox Searchlight Pictures",
+    "cover": "/images/28_days_later.png"
+  },
+  "movie_7": {
+    "title": "Dawn of the Dead",
+    "overview": "Sobreviventes tentam resistir a zumbis em um shopping moderno.",
+    "featured": false,
+    "release_year": 2004,
+    "company": "Universal Pictures",
+    "cover": "/images/dawn_of_the_dead_2004.png"
+  },
+  "movie_8": {
+    "title": "Shaun of the Dead",
+    "overview": "Um homem comum enfrenta um apocalipse zumbi com humor.",
+    "featured": false,
+    "release_year": 2004,
+    "company": "Universal Pictures",
+    "cover": "/images/shaun_of_the_dead.png"
+  },
+  "movie_9": {
+    "title": "Land of the Dead",
+    "overview": "Humanos vivem em uma cidade protegida enquanto zumbis evoluem.",
+    "featured": false,
+    "release_year": 2005,
+    "company": "Universal Pictures",
+    "cover": "/images/land_of_the_dead.png"
+  },
+  "movie_10": {
+    "title": "REC",
+    "overview": "Um vírus se espalha dentro de um prédio isolado.",
+    "featured": false,
+    "release_year": 2007,
+    "company": "Filmax",
+    "cover": "/images/rec.png"
+  },
+  "movie_11": {
+    "title": "I Am Legend",
+    "overview": "Um cientista tenta sobreviver em um mundo devastado por infectados.",
+    "featured": false,
+    "release_year": 2007,
+    "company": "Warner Bros.",
+    "cover": "/images/i_am_legend.png"
+  },
+  "movie_12": {
+    "title": "Zombieland",
+    "overview": "Sobreviventes criam regras para viver em um mundo com zumbis.",
+    "featured": false,
+    "release_year": 2009,
+    "company": "Columbia Pictures",
+    "cover": "/images/zombieland.png"
+  },
+  "movie_13": {
+    "title": "World War Z",
+    "overview": "Uma pandemia global de zumbis ameaça a humanidade.",
+    "featured": false,
+    "release_year": 2013,
+    "company": "Paramount Pictures",
+    "cover": "/images/world_war_z.png"
+  },
+  "movie_14": {
+    "title": "Train to Busan",
+    "overview": "Passageiros lutam para sobreviver a um surto zumbi em um trem.",
+    "featured": false,
+    "release_year": 2016,
+    "company": "Next Entertainment World",
+    "cover": "/images/train_to_busan.png"
+  },
+  "movie_15": {
+    "title": "Army of the Dead",
+    "overview": "Mercenários invadem uma cidade infestada de zumbis para um assalto.",
+    "featured": false,
+    "release_year": 2021,
+    "company": "Netflix",
+    "cover": "/images/army_of_the_dead.png"
+  }
+}
