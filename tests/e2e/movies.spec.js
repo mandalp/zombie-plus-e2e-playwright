@@ -3,12 +3,8 @@ const data = require('../support/fixtures/movies.json')
 const { executeSQL } = require(`../support/database`)
 
 test.beforeAll(async () => {
-    await executeSQL('DELETE FROM movies;')
+    await executeSQL('DELETE FROM movies')
 })
-
-// test.beforeEach(async ({ page }) => {
-//     await page.login.doLogin('admin@zombieplus.com', 'pwd123')
-// })
 
 test('should register a new movie', async ({ page }) => {
     const movie = data.create
@@ -50,21 +46,27 @@ test('should remove a movie from the catalog', async ({ page, request }) => {
     await page.dialog.containText(`Filme removido com sucesso.`)
 })
 
-test('should do a search for the name "Morto"', async ({ page, request }) => {
+test('should do a search with no results', async ({ page }) => {
+    await page.login.doLogin('admin@zombieplus.com', 'pwd123')
+    await page.movies.searchMovie('Filme que não existe')
+    await page.movies.noSearchResults('Nenhum registro encontrado!')
+})
+
+test('should verify if the movie is featured', async ({ page, request }) => {
+    const movie = data.featured
+    await request.api.postMovie(movie)
+    await page.movies.checkFeatured(movie.title)
+})
+
+test('should do a search for the name "morto"', async ({ page, request }) => {
     const movies = data.search
 
-    for (const movie of movies.data) {
-        await request.api.postMovie(movie)
-    }
+    movies.data.forEach(async (m) => {
+        await request.api.postMovie(m)
+    })
 
     await page.login.doLogin('admin@zombieplus.com', 'pwd123')
     await page.movies.searchMovie(movies.input)
 
     await page.movies.tableHave(movies.outputs)
-})
-
-test('should do a search with no results', async ({ page }) => {
-    await page.login.doLogin('admin@zombieplus.com', 'pwd123')
-    await page.movies.searchMovie('Filme que não existe')
-    await expect(page.getByText('Nenhum registro encontrado!')).toBeVisible()
 })

@@ -58,12 +58,31 @@ export class Movies {
     }
 
     async searchMovie(target) {
-        await this.page.getByPlaceholder('Busque pelo nome').fill(target)
+        await this.page.getByPlaceholder('Busque pelo nome')
+            .fill(target)
+
         await this.page.click('.actions button')
     }
 
     async tableHave(content) {
-        const rows = this.page.getByRole('row')
-        await expect(rows).toContainText(content)
+        const rows = this.page.locator('table').locator('tr').filter({ has: this.page.locator('td') })
+        await expect(rows).toHaveCount(content.length)
+
+        for (const expectedText of content) {
+            await expect(rows.filter({ hasText: expectedText })).toHaveCount(1)
+        }
+    }
+
+    async noSearchResults(text) {
+        await expect(this.page.getByText(text)).toBeVisible()
+    }
+
+    async checkFeatured(title) {
+        await this.page.goto('http://localhost:3000/')
+        const destaques = this.page.locator('section:has(h2:has-text("Destaques"))')
+
+        await expect(
+            destaques.getByRole('img', { name: title })
+        ).toBeVisible()
     }
 }

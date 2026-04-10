@@ -1,5 +1,3 @@
-import { title } from 'node:process'
-
 const { expect } = require('@playwright/test')
 
 export class API {
@@ -45,12 +43,7 @@ export class API {
                 overview: movie.overview,
                 release_year: movie.release_year,
                 company_id: companyId,
-                featured: movie.featured,
-                // cover: {
-                //     name: 'cover.jpg',
-                //     mimeType: 'image/jpeg',
-                //     buffer: await this.request._attachFile(`tests/support/fixtures${movie.cover}`)
-                // }
+                featured: movie.featured
             }
         })
         expect(response.ok()).toBeTruthy()

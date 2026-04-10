@@ -7,6 +7,14 @@
     "company": "Universal Pictures",
     "cover": "/covers/movies/wwz.png"
   },
+  "featured": {
+    "title": "OPZ - O Plano Zumbi",
+    "overview": "Um grupo de sobreviventes tenta resistir a zumbis em um shopping moderno.",
+    "featured": true,
+    "release_year": 2004,
+    "company": "Sony Pictures",
+    "cover": "/covers/movies/opz.jpg"
+  },
   "duplicate": {
     "title": "Resident Evil",
     "overview": "Sobreviventes se escondem em um shopping enquanto enfrentam zumbis.",
