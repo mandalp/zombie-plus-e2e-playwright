@@ -20,9 +20,7 @@ export class Movies {
 
         await this.page.locator('#title').fill(movie.title)
         await this.page.locator('#overview').fill(movie.overview)
-        await this.page.locator('#select_company_id .react-select__indicator').click()
-        // const html = await this.page.content()
-        // console.log(html)
+        await this.page.locator('#select_company_id .react-select__control').click();
 
         await this.page.locator('.react-select__option')
             .filter({ hasText: movie.company })
@@ -78,7 +76,7 @@ export class Movies {
     }
 
     async checkFeatured(title) {
-        await this.page.goto('http://localhost:3000/')
+        await this.page.goto('/')
         const destaques = this.page.locator('section:has(h2:has-text("Destaques"))')
 
         await expect(

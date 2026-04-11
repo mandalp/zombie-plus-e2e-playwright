@@ -64,7 +64,7 @@ test('should do a search for the name "morto"', async ({ page, request }) => {
     movies.data.forEach(async (m) => {
         await request.api.postMovie(m)
     })
-
+    
     await page.login.doLogin('admin@zombieplus.com', 'pwd123')
     await page.movies.searchMovie(movies.input)
 

@@ -1,5 +1,10 @@
 const { test, expect } = require('../support')
 const { faker } = require('@faker-js/faker')
+const { executeSQL } = require(`../support/database`)
+
+test.beforeAll(async () => {
+    await executeSQL('DELETE FROM leads')
+})
 
 test.beforeEach(async ({ page }) => {
     await page.leads.visit()
@@ -19,7 +24,7 @@ test('should register a lead in the waiting queue.', async ({ page }) => {
 test('should not register when an email exists.', async ({ page, request }) => {
     const leadName = faker.person.fullName()
     const leadEmail = faker.internet.email({ firstName: leadName.split(' ')[0], lastName: leadName.split(' ')[1] })
-    const message = 'Verificamos que o endereço de e-mail fornecido já consta em nossa lista de espera.'
+    const message = 'Verificamos que o endereço de e-mail fornecido já consta em nossa lista de espera. Isso significa que você está um passo mais perto de aproveitar nossos serviços.'
 
     const newLead = await request.post('http://localhost:3333/leads', {
         data: {
