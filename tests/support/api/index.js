@@ -18,26 +18,29 @@ export class API {
         })
         expect(response.ok()).toBeTruthy()
         const body = await JSON.parse(await response.text())
-        this.token = body.token
+        this.token = 'Bearer ' + body.token
     }
 
-    async getCompanyByName(name) {
-        const response = await this.request.get(`http://localhost:3333/companies?name=${name}`, {
+    async getCompanyByName(companyName) {
+        const response = await this.request.get(`${this.baseApi}/companies`, {
             headers: {
-                Authorization: `Bearer ${this.token}`
+                Authorization: this.token
+            },
+            params: {
+                name: companyName
             }
         })
         expect(response.ok()).toBeTruthy()
-        const body = await JSON.parse(await response.text())
+        const body = JSON.parse(await response.text())
         return body.data[0].id
     }
 
     async postMovie(movie) {
         const companyId = await this.getCompanyByName(movie.company)
-        return this.request.post(`${this.baseApi}/movies`, {
+        const response = await this.request.post(`${this.baseApi}/movies`, {
             headers: {
-                Authorization: `Bearer ${this.token}`,
-                ContentType: 'multipart/form-data',
+                Authorization: this.token,
+                //ContentType: 'multipart/form-data',
                 Accept: 'application/json, text/plain, */*'
             },
             multipart: {
@@ -46,6 +49,26 @@ export class API {
                 release_year: movie.release_year,
                 company_id: companyId,
                 featured: movie.featured
+            }
+        })
+        expect(response.ok()).toBeTruthy()
+    }
+
+    async postTVShow(tvshow) {
+        const companyId = await this.getCompanyByName(tvshow.company)
+        const response = await this.request.post(`${this.baseApi}/tvshows`, {
+            headers: {
+                Authorization: this.token,
+                //ContentType: 'multipart/form-data',
+                Accept: 'application/json, text/plain, */*'
+            },
+            multipart: {
+                title: tvshow.title,
+                overview: tvshow.overview,
+                release_year: tvshow.release_year,
+                company_id: companyId,
+                featured: tvshow.featured,
+                seasons: tvshow.season
             }
         })
         expect(response.ok()).toBeTruthy()
