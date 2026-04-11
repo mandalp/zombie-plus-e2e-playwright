@@ -4,6 +4,32 @@
 
 This project is part of the Playwright course from [QAXperience](https://qaxperience.com) and was developed to demonstrate automated end-to-end tests using the Playwright tool. The project focuses on functional and web automation tests for the Zombie Plus application, applying software quality best practices with database integration and API testing.
 
+### AI-Generated TV Shows Module
+
+The TV Shows test suite was generated using Generative AI (Cascade AI Assistant), which significantly accelerated the initial development process. However, this approach presented unique challenges that required extensive manual adjustments and debugging:
+
+**Key Learnings from AI-Assisted Test Development:**
+
+- **Initial Speed vs. Refinement Time**: While AI generated the initial test structure quickly, the debugging and refinement process still required significant effort due to:
+  - Incorrect selectors and element locators
+  - Differences between expected and actual application behavior
+  - API integration issues, especially around field naming and multipart payloads
+  - Test isolation challenges during parallel execution
+
+- **Playwright's Debugging Power**: The framework was invaluable for identifying and resolving issues through:
+  - Detailed error messages and stack traces
+  - Visual debugging with screenshots, videos, and traces
+  - Network request monitoring
+  - Element inspection capabilities
+
+- **Parallel Execution Challenges**: Playwright's parallel execution provides strong runtime benefits, but requires careful attention to:
+  - Test data isolation between workers
+  - Database state management
+  - Race conditions in setup and teardown
+  - Shared resource conflicts
+
+**Critical Insight**: The AI-generated code provided a strong starting point, but human expertise was essential for understanding the real application behavior, identifying edge cases, and improving test reliability. The combination of AI assistance, human judgment, and Playwright's debugging tools resulted in an efficient development workflow.
+
 ## Technologies
 
 - **Playwright** (^1.58.2) - End-to-end test automation framework
@@ -58,18 +84,43 @@ tests/
     leads.spec.js       # Lead management tests
     login.spec.js       # Authentication tests
     movies.spec.js      # Movie management tests
+    tvshows.spec.js     # TV Shows management tests (AI-generated)
   support/              # Support files and configurations
     actions/            # Page Object Model actions
       Components.js     # Reusable component actions
       Leads.js          # Lead-specific actions
       Login.js          # Login-specific actions
       Movies.js         # Movie-specific actions
+      TVShows.js        # TV Shows-specific actions (AI-generated)
     api/                # API integration helpers
       index.js          # API request utilities
     fixtures/           # Test data fixtures
+      covers/           # Image assets for test data
+        movies/         # Movie cover images
+        tvshows/        # TV Shows cover images
+      movies.json       # Movie test data
+      tvshows.json      # TV Shows test data (AI-generated)
     database.js         # Database connection and SQL execution
     index.js            # Test setup and custom fixtures
 ```
+
+### Test Coverage
+
+The project includes comprehensive test coverage for:
+
+- **Authentication**: Login validation, credential testing
+- **Lead Management**: Lead creation, validation, duplicate prevention
+- **Movie Management**: CRUD operations, search, featured content
+- **TV Shows Management**: Complete CRUD with seasons field, search, validation (AI-generated)
+
+**TV Shows Test Suite Features:**
+- Complete CRUD operations via UI and API
+- Season-specific field validation (numeric input)
+- Search functionality with multiple results
+- Featured content verification
+- Duplicate prevention
+- Blank field validation
+- Database isolation for test reliability
 
 ## About the Author
 
