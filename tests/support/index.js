@@ -2,6 +2,7 @@ const { test: base, expect } = require('@playwright/test')
 
 const { Login } = require('./actions/Login')
 const { Movies } = require('./actions/Movies')
+const { TVShows } = require('./actions/TVShows')
 const { Leads } = require('./actions/Leads')
 const { Dialog } = require('./actions/Components')
 const { API } = require('./api')
@@ -11,6 +12,7 @@ const test = base.extend({
         const context = page
         context['login'] = new Login(page)
         context['movies'] = new Movies(page)
+        context['tvshows'] = new TVShows(page)
         context['leads'] = new Leads(page)
         context['dialog'] = new Dialog(page)
         await use(context)
