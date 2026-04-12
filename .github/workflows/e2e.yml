@@ -33,7 +33,7 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '18'
+        node-version: '20'
         cache: 'npm'
         cache-dependency-path: |
           package-lock.json
@@ -78,7 +78,9 @@ jobs:
         BASE_URL: http://localhost:3000
 
     - name: Wait for services to be ready
-      run: npx wait-on http://localhost:3333 http://localhost:3000
+      run: |
+        echo "Waiting for API and Web..."
+        npx wait-on --timeout 60000 --verbose http-get://localhost:3333 http-get://localhost:3000
 
     - name: Run E2E tests
       run: npx playwright test --workers=1
