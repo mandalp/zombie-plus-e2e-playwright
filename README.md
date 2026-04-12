@@ -1,8 +1,12 @@
 # Zombie Plus E2E Testing Project
 
+![Allure Report](https://github.com/mandalp/zombie-plus-e2e-playwright/actions/workflows/allure-report.yml/badge.svg)
+
 ## About
 
 This project is part of the Playwright course from [QAXperience](https://qaxperience.com) and was developed to demonstrate automated end-to-end tests using the Playwright tool. The project focuses on functional and web automation tests for the Zombie Plus application, applying software quality best practices with database integration and API testing.
+
+📊 **[View Test Report](https://mandalp.github.io/zombie-plus-e2e-playwright/)** — Published automatically via GitHub Actions using Allure Report.
 
 ### AI-Generated TV Shows Module
 
@@ -32,49 +36,27 @@ The TV Shows test suite was generated using Generative AI (Cascade AI Assistant)
 
 ## Technologies
 
-- **Playwright** (^1.58.2) - End-to-end test automation framework
+- **Playwright** (^1.59.1) - End-to-end test automation framework
 - **Node.js** - JavaScript runtime environment
 - **@faker-js/faker** (^10.4.0) - Fake test data generation
-- **PostgreSQL** (^8.20.0) - Database integration for testing
-- **@types/node** (^25.5.0) - TypeScript definitions for Node.js
+- **PostgreSQL** - Database integration for testing
+- **Allure Report** - Test reporting and result visualization
 
-## How to Run
+## Test Report
 
-### Prerequisites
+This project uses **Allure Report** to generate rich, detailed test reports with:
 
-- Node.js installed
-- NPM or Yarn
-- PostgreSQL database running on localhost:5432 with database 'zombieplus'
+- Test execution summary with pass/fail/skip metrics
+- Step-by-step test execution breakdown
+- Screenshots and traces on failure
+- Historical trend analysis across runs
+- Categorization of failures by type
 
-### Install Dependencies
+Reports are automatically published to **GitHub Pages** on every push to `main`.
 
-```bash
-npm install
-```
+👉 **[Access the latest report here](https://mandalp.github.io/zombie-plus-e2e-playwright/)**
 
-### Running Tests
-
-To run all tests:
-```bash
-npx playwright test
-```
-
-To run tests in headed mode (with graphical interface):
-```bash
-npx playwright test --headed
-```
-
-To run tests on a specific browser:
-```bash
-npx playwright test --project=chromium
-npx playwright test --project=firefox
-npx playwright test --project=webkit
-```
-
-To view the HTML test report:
-```bash
-npx playwright show-report
-```
+> **Note:** This project depends on a local environment (frontend, API and PostgreSQL database) to run the tests. The environment is not publicly available — results can be tracked via the Allure Report published on GitHub Pages.
 
 ### Project Structure
 
