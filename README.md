@@ -93,7 +93,7 @@ tests/
       Movies.js         # Movie-specific actions
       TVShows.js        # TV Shows-specific actions (AI-generated)
     api/                # API integration helpers
-      index.js          # API request utilities
+      index.js          # API request utilities (Leads, Movies, TV Shows)
     fixtures/           # Test data fixtures
       covers/           # Image assets for test data
         movies/         # Movie cover images
@@ -109,7 +109,11 @@ tests/
 The project includes comprehensive test coverage for:
 
 - **Authentication**: Login validation, credential testing
-- **Lead Management**: Lead creation, validation, duplicate prevention
+- **Lead Management**: 
+  - Public registration via UI with validation
+  - Admin management with CRUD operations
+  - Search functionality by email
+  - Duplicate prevention and data validation
 - **Movie Management**: CRUD operations, search, featured content
 - **TV Shows Management**: Complete CRUD with seasons field, search, validation (AI-generated)
 
@@ -120,6 +124,14 @@ The project includes comprehensive test coverage for:
 - Featured content verification
 - Duplicate prevention
 - Blank field validation
+- Database isolation for test reliability
+
+**Leads Test Suite Features:**
+- Public registration with form validation
+- Admin management with full CRUD operations
+- Search functionality by email
+- Data validation and duplicate prevention
+- API integration for test data setup
 - Database isolation for test reliability
 
 ## About the Author

@@ -35,6 +35,16 @@ export class API {
         return body.data[0].id
     }
 
+    async postLead(lead) {
+        const response = await this.request.post(`${this.baseApi}/leads`, {
+            data: {
+                name: lead.name,
+                email: lead.email
+            }
+        })
+        expect(response.ok()).toBeTruthy()
+    }
+
     async postMovie(movie) {
         const companyId = await this.getCompanyByName(movie.company)
         const response = await this.request.post(`${this.baseApi}/movies`, {
