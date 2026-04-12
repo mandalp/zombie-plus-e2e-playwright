@@ -25,10 +25,20 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   // reporter: [['list'], ['html']],
+  // reporter: [
+  //   ['list'],
+  //   ['playwright-tesults-reporter', {'tesults-target': process.env.TOKEN}]
+  // ],
+//   reporter: [
+//   ['list'],
+//   ['html', { open: 'never' }],
+//   ['github'],
+// ],
   reporter: [
-    ['list'],
-    ['playwright-tesults-reporter', {'tesults-target': process.env.TOKEN}]
+    ['line'], // Mantém a saída básica no terminal
+    ['allure-playwright', { outputFolder: 'allure-results' }]
   ],
+
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
@@ -36,8 +46,8 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
-    screenshot: 'only-on-failure',
-    video: 'retain-on-failure',
+    screenshot: 'on',
+    video: 'on',
     baseURL: process.env.BASE_URL,
     viewport: { width: 1440, height: 900 }
   },
