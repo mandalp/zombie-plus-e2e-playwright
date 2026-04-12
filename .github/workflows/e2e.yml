@@ -15,9 +15,9 @@ jobs:
       postgres:
         image: postgres:15-alpine
         env:
-          POSTGRES_USER: postgres
           POSTGRES_PASSWORD: pwd123
           POSTGRES_DB: zombieplus
+          POSTGRES_USER: postgres
         options: >-
           --health-cmd pg_isready -U postgres
           --health-interval 10s
@@ -53,9 +53,8 @@ jobs:
     - name: Start API server
       working-directory: ./zombieplus/api
       run: |
-        npm run dev &
-        echo $! > zombieplus-api.log
-        tail -f zombieplus-api.log &
+        npm run dev > zombieplus-api.log 2>&1 &
+        echo $! > api.pid
       env:
         BASE_API: http://localhost:3333
         BASE_URL: http://localhost:3000
@@ -68,9 +67,8 @@ jobs:
     - name: Start Web server
       working-directory: ./zombieplus/web
       run: |
-        npm run dev &
-        echo $! > zombieplus-web.log
-        tail -f zombieplus-web.log &
+        npm run dev > zombieplus-web.log 2>&1 &
+        echo $! > web.pid
       env:
         BASE_API: http://localhost:3333
         BASE_URL: http://localhost:3000
