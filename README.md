@@ -76,6 +76,56 @@ To view the HTML test report:
 npx playwright show-report
 ```
 
+### GitHub Actions CI/CD
+
+This project includes automated E2E testing with GitHub Actions that runs the complete application stack.
+
+#### Workflow Features
+
+- **Automatic Execution**: Runs on push and pull requests to `main` branch
+- **Full Stack**: Starts PostgreSQL, API, and Web application
+- **Service Health**: Waits for services to be ready before running tests
+- **Parallel Execution**: Runs tests with single worker to avoid database conflicts
+- **Artifact Upload**: Always uploads test results, reports, and application logs
+
+#### Workflow Steps
+
+1. **Setup**: Ubuntu latest with Node.js 18
+2. **Database**: PostgreSQL 15 container with health checks
+3. **Dependencies**: Installs app, API, and test dependencies
+4. **Browsers**: Installs Playwright browsers with system dependencies
+5. **Application**: Starts API (`npm run dev`) and Web (`npm run dev`) services
+6. **Health Check**: Waits for `localhost:3333` and `localhost:3000` to be ready
+7. **Tests**: Runs E2E tests with `--workers=1`
+8. **Artifacts**: Uploads `playwright-report`, `test-results`, and application logs
+
+#### Viewing Test Results
+
+1. Go to **Actions** tab in your GitHub repository
+2. Click on the workflow run
+3. Download artifacts:
+   - **playwright-report**: HTML test report with screenshots and traces
+   - **test-results**: Individual test artifacts (screenshots, videos)
+   - **api-logs**: API server logs
+   - **web-logs**: Web server logs
+
+#### Local Development
+
+To run tests locally:
+
+```bash
+# Start the application
+cd zombieplus/api && npm run dev &
+cd zombieplus/web && npm run dev &
+
+# Run tests
+npm test
+```
+
+#### Workflow Badge
+
+![E2E Tests](https://github.com/qaxperience-education/zombieplus-playwright/actions/workflows/e2e.yml/badge.svg)
+
 ### Project Structure
 
 ```
